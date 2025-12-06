@@ -16,6 +16,8 @@ static int hex_len(unsigned long n)
 int print_hex(unsigned long n, int upper)
 {
 	char buffer[32];
+	for (int j = 0; j < 32; j++)
+		buffer[j] = 0;
 	char *base;
 	int len;
 	int i;

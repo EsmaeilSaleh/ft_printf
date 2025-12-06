@@ -16,6 +16,8 @@ static int num_len(long n)
 int print_nbr(int n)
 {
 	char buffer[32];
+	for (int j = 0; j < 32; j++)
+		buffer[j] = 0;
 	long nb;
 	int len;
 	int i;
