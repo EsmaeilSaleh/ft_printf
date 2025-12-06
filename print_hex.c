@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-static int	hex_len(unsigned long n)
+static int hex_len(unsigned long n)
 {
-	int	len;
+	int len;
 
 	len = 1;
 	while (n >= 16)
@@ -13,23 +13,28 @@ static int	hex_len(unsigned long n)
 	return (len);
 }
 
-int	print_hex(unsigned long n, int upper)
+int print_hex(unsigned long n, int upper)
 {
-	char	buffer[32];
-	char	*base;
-	int		len;
-	int		i;
+	char buffer[32];
+	char *base;
+	int len;
+	int i;
 
 	base = upper ? "0123456789ABCDEF" : "0123456789abcdef";
 	len = hex_len(n);
 	i = len - 1;
+
 	if (n == 0)
 		buffer[0] = '0';
-	while (n > 0)
+	else
 	{
-		buffer[i] = base[n % 16];
-		n /= 16;
-		i--;
+		while (n > 0)
+		{
+			buffer[i] = base[n % 16];
+			n /= 16;
+			i--;
+		}
 	}
+
 	return (write(1, buffer, len));
 }
